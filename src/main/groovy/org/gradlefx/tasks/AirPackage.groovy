@@ -21,6 +21,7 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.file.ConfigurableFileTree
 import org.gradle.api.file.FileTreeElement
 import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.Internal
 import org.gradlefx.validators.actions.ValidateAirPackageTaskPropertiesAction
 import org.gradlefx.cli.compiler.CompilerOption;
 import org.gradlefx.conventions.FlexType;
@@ -31,6 +32,7 @@ class AirPackage extends DefaultTask {
     private static final String ANT_RESULT_PROPERTY = 'airPackageResult'
     private static final String ANT_OUTPUT_PROPERTY = 'airPackageOutput'
 
+    @Internal
     GradleFxConvention flexConvention;
 
     public AirPackage() {

@@ -18,10 +18,12 @@ package org.gradlefx.tasks
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.Internal
 import org.gradlefx.conventions.GradleFxConvention
 
 class CopyResources extends DefaultTask {
 
+    @Internal
     GradleFxConvention flexConvention;
 
     public CopyResources() {

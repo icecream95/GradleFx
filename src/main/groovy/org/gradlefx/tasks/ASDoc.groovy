@@ -19,6 +19,7 @@ package org.gradlefx.tasks
 import org.gradle.api.DefaultTask
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.Internal
 import org.gradlefx.cli.compiler.AntBasedCompilerProcess
 import org.gradlefx.cli.compiler.CompilerJar
 import org.gradlefx.cli.compiler.CompilerProcess
@@ -30,6 +31,7 @@ import org.gradlefx.conventions.GradleFxConvention
 
 class ASDoc extends DefaultTask {
 
+    @Internal
     GradleFxConvention flexConvention
 
     public ASDoc() {

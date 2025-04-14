@@ -17,6 +17,7 @@ package org.gradlefx.tasks.adt
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.Internal
 import org.gradlefx.conventions.GradleFxConvention
 import org.gradlefx.tasks.TaskGroups
 import org.gradlefx.tasks.Tasks
@@ -34,10 +35,13 @@ public class AdtTask extends DefaultTask {
     private static final String ANT_OUTPUT_PROPERTY = 'adtOutput'
     private static final String ANT_ERROR_PROPERTY = 'adtError'
 
+    @Internal
     GradleFxConvention flexConvention;
 
+    @Internal
     List adtArguments
 
+    @Internal
     String adtWorkDir;
 
     public AdtTask() {

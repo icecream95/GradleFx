@@ -22,6 +22,7 @@ import org.gradle.api.artifacts.FileCollectionDependency
 import org.gradle.api.artifacts.ProjectDependency
 import org.gradle.api.logging.LogLevel
 import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.Internal
 import org.gradlefx.cli.instructions.CompilerInstructionsBuilder
 import org.gradlefx.configuration.Configurations
 import org.gradlefx.conventions.FlexType
@@ -32,7 +33,9 @@ import org.gradlefx.validators.runner.FailOnErrorValidatorRunner
 
 class Compile extends DefaultTask implements CompileTask {
 
+    @Internal
     CompileTask delegate
+    @Internal
     GradleFxConvention flexConvention
 
     public Compile() {

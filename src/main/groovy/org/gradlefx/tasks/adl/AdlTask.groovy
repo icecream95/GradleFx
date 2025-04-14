@@ -18,6 +18,7 @@ package org.gradlefx.tasks.adl
 import org.apache.tools.ant.taskdefs.condition.Os
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.Internal
 import org.gradlefx.conventions.GradleFxConvention
 import org.gradlefx.tasks.TaskGroups
 import org.gradlefx.tasks.Tasks
@@ -31,10 +32,13 @@ class AdlTask extends DefaultTask {
 
     protected static final Logger LOG = LoggerFactory.getLogger 'gradlefx'
 
+    @Internal
     GradleFxConvention flexConvention;
 
+    @Internal
     List adlArguments
 
+    @Internal
     String adlWorkDir;
 
     public AdlTask() {

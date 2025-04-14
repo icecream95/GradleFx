@@ -24,6 +24,7 @@ import org.gradle.api.file.FileTree
 import org.gradle.api.file.FileTreeElement
 import org.gradle.api.logging.LogLevel
 import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.Internal
 import org.gradlefx.cli.compiler.AntBasedCompilerProcess
 import org.gradlefx.cli.compiler.CompilerJar
 import org.gradlefx.cli.compiler.CompilerProcess
@@ -44,8 +45,11 @@ class TestFx extends DefaultTask {
 
     private static final Logger LOG = LoggerFactory.getLogger TestFx
 
+    @Internal
     GradleFxConvention flexConvention
+    @Internal
     FlexUnitConvention flexUnit
+    @Internal
     PathToClassNameExtractor pathToClassNameExtractor
 
     public TestFx() {
