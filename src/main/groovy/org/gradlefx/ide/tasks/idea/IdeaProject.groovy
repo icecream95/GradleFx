@@ -22,7 +22,7 @@ import org.gradle.api.file.ConfigurableFileTree
 import org.gradle.api.file.FileTreeElement
 import org.gradle.api.internal.artifacts.dependencies.DefaultExternalModuleDependency
 import org.gradle.api.internal.artifacts.dependencies.DefaultProjectDependency
-import org.gradle.api.internal.artifacts.dependencies.DefaultSelfResolvingDependency
+import org.gradle.api.internal.artifacts.dependencies.DefaultFileCollectionDependency
 import org.gradlefx.cli.compiler.CompilerOption
 import org.gradlefx.configuration.Configurations
 import org.gradlefx.conventions.FlexType
@@ -134,8 +134,8 @@ class IdeaProject extends AbstractIDEProject {
                         def entryProjectRef = new Node(entries, 'entry', ['module-name':projectDependency.dependencyProject.name, 'build-configuration-name':projectDependency.dependencyProject.name])
                         new Node(entryProjectRef, 'dependency', ['linkage': configTypeToLinkageType(configType) ])
                         new Node(rootMgr, 'orderEntry', [type:"module", 'module-name':projectDependency.dependencyProject.name]);
-                    } else if (dependency instanceof DefaultSelfResolvingDependency) {
-                        def selfDependency = dependency as DefaultSelfResolvingDependency;
+                    } else if (dependency instanceof DefaultFileCollectionDependency) {
+                        def selfDependency = dependency as DefaultFileCollectionDependency;
                         selfDependency.source.files.each { file ->
                             generateDependencyNode(file, entries, rootMgr, configType);
                         }
