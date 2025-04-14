@@ -3,6 +3,8 @@ package org.gradlefx.cli.compiler
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
+import org.gradle.api.AntBuilder
+
 /**
  * Executes the compiler itself.
  */
