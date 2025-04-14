@@ -15,15 +15,13 @@
 */
 
 import org.gradle.api.XmlProvider
-import org.gradle.api.artifacts.maven.MavenDeployment
 
 apply plugin: 'groovy'
-apply plugin: 'maven'
 apply plugin: 'signing'
 apply plugin: 'idea'
 
 group = 'org.gradlefx'
-version = '1.5.0'
+version = '1.5.0a'
 ext.packaging = 'jar'
 
 def isDevBuild
@@ -49,33 +47,31 @@ repositories {
 }
 
 dependencies {
-    compile gradleApi()
-    compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
-    compile group: 'commons-io', name: 'commons-io', version: '2.4'
-    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.3.10'
-    testCompile group: 'org.spockframework', name: 'spock-core', version: '0.7-groovy-2.0'
+    implementation gradleApi()
+    implementation group: 'commons-lang', name: 'commons-lang', version: '2.6'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.4'
+    implementation group: 'org.codehaus.groovy', name: 'groovy-all', version: '3.0.22'
+    testImplementation group: 'org.spockframework', name: 'spock-core', version: '2.1-groovy-3.0'
+}
+
+tasks.withType(Test) {
+    jvmArgs('--add-opens=java.base/java.lang=ALL-UNNAMED')
 }
 
 task groovydocJar(type: Jar, dependsOn: groovydoc) {
-    classifier = 'javadoc'
+    archiveClassifier = 'javadoc'
     from 'build/docs/groovydoc'
 }
 
 task sourcesJar(type: Jar) {
     from sourceSets.main.allSource
-    classifier = 'sources'
+    archiveClassifier = 'sources'
 }
 
 artifacts {
     archives jar
     archives groovydocJar
     archives sourcesJar
-}
-
-task wrapper(type: Wrapper) {
-    group = 'Buildmaster'
-    description = 'Generates gradlew and gradlew.bat bootstrap scripts'
-    gradleVersion = '2.5'
 }
 
 //********* artifact signing *********
@@ -86,56 +82,5 @@ if(isReleaseBuild) {
 } else {
     task signArchives {
         // do nothing
-    }
-}
-
-uploadArchives {
-    repositories {
-        if (isDevBuild) {
-            mavenLocal()
-        }
-        else {
-            mavenDeployer {
-                if(isReleaseBuild) {
-                    beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-                }
-
-                repository(url: sonatypeRepositoryUrl) {
-                  authentication(userName: sonatypeUsername, password: sonatypePassword)
-                }
-
-                pom.project {
-                   name 'GradleFx'
-                   packaging 'jar'
-                   description 'GradleFx is a Gradle plugin for building Flex and Actionscript applications'
-                   url 'http://gradlefx.github.com/'
-
-                   scm {
-                       url 'scm:git@github.com:GradleFx/GradleFx.git'
-                       connection 'scm:git@github.com:GradleFx/GradleFx.git'
-                       developerConnection 'scm:git@github.com:GradleFx/GradleFx.git'
-                   }
-
-                   licenses {
-                       license {
-                           name 'The Apache Software License, Version 2.0'
-                           url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                           distribution 'repo'
-                       }
-                   }
-
-                   developers {
-                       developer {
-                           id 'yennicktrevels'
-                           name 'Yennick Trevels'
-                       }
-                       developer {
-                           id 'stevendick'
-                           name 'Steven Dick'
-                       }
-                   }
-               }
-            }
-        }
     }
 }
