@@ -49,7 +49,7 @@ abstract class AbstractIDEProject extends DefaultTask implements ProjectTask {
         group = TaskGroups.IDE
         description = "Generate $ideName project"
 
-        logging.setLevel LogLevel.INFO
+        ant.lifecycleLogLevel = "ERROR"
         flexConvention = project.convention.plugins.flex
 
         dependsOn(Scaffold.NAME)

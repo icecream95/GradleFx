@@ -40,7 +40,7 @@ class FlashBuilderClean extends DefaultTask implements CleanTask {
         group = TaskGroups.IDE
         description = "Cleans $ideName project, i.e. removes $ideName configuration files and folders"
 
-        logging.setLevel LogLevel.INFO
+        ant.lifecycleLogLevel = "ERROR"
     }
 
     @Override

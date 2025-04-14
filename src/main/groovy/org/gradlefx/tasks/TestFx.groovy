@@ -56,7 +56,7 @@ class TestFx extends DefaultTask {
         group = TaskGroups.VERIFICATION
         description = "Run the FlexUnit tests."
 
-        logging.setLevel LogLevel.INFO
+        ant.lifecycleLogLevel = "ERROR"
 
         flexConvention = project.convention.plugins.flex
         flexUnit = flexConvention.flexUnit

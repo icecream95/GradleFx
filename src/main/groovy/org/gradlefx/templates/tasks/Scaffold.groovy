@@ -44,7 +44,7 @@ class Scaffold extends DefaultTask {
     public Scaffold() {
         group = TaskGroups.GENERATING
         description = "Generate IDE independent project scaffold"
-        logging.setLevel LogLevel.INFO
+        ant.lifecycleLogLevel = "ERROR"
         flexConvention = project.convention.plugins.flex
     }
 
