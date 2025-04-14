@@ -1,6 +1,6 @@
 h2. GradleFx for newer Gradle
 
-Tested with Gradle 8.13 and OpenJDK 21 for building Scratch 2.
+Tested with Gradle 8.13 and OpenJDK 21 for building Scratch 2.0.
 
 There are some deprecated Gradle features used that seem
 annoying to get rid of, so this won't work with Gradle 9.
