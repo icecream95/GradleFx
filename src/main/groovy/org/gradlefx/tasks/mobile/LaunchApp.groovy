@@ -26,7 +26,7 @@ import org.gradlefx.tasks.Tasks
 class LaunchApp extends AdtTask {
 
     public LaunchApp() {
-        description "launch app to target device"
+        description = "launch app to target device"
         group = TaskGroups.UPLOAD
         dependsOn installAppTaskName
     }

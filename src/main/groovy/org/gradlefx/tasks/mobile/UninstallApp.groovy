@@ -25,7 +25,7 @@ import org.gradlefx.tasks.TaskGroups
 class UninstallApp extends AdtTask {
 
     public UninstallApp() {
-        description "uninstall app from the target device"
+        description = "uninstall app from the target device"
         group = TaskGroups.UPLOAD
     }
 
