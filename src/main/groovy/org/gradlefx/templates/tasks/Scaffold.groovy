@@ -23,6 +23,7 @@ import java.io.InputStream;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.logging.LogLevel;
 import org.gradle.api.tasks.TaskAction;
+import org.gradle.api.tasks.Internal
 import org.gradlefx.conventions.GradleFxConvention;
 import org.gradlefx.util.TemplateUtil;
 import org.slf4j.Logger;
@@ -36,6 +37,7 @@ class Scaffold extends DefaultTask {
     protected static final Logger LOG = LoggerFactory.getLogger 'gradlefx'
 
     /** Convention properties */
+    @Internal
     GradleFxConvention flexConvention
 
     /**

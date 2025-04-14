@@ -20,6 +20,7 @@ import groovy.xml.XmlUtil
 import org.gradle.api.DefaultTask
 import org.gradle.api.logging.LogLevel
 import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.Internal
 import org.gradlefx.configuration.Configurations
 import org.gradlefx.conventions.GradleFxConvention
 import org.gradlefx.ide.validators.actions.ValidateIDEProjectTaskAction
@@ -35,9 +36,11 @@ abstract class AbstractIDEProject extends DefaultTask implements ProjectTask {
     protected static final Logger LOG = LoggerFactory.getLogger 'gradlefx'
 
     /** Convention properties */
+    @Internal
     protected GradleFxConvention flexConvention
 
     /** The name of the targeted IDE */
+    @Internal
     protected String ideName
 
     /**
