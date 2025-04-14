@@ -28,7 +28,7 @@ enum TaskGroups {
 
     private String groupName
 
-    public TaskGroups(String groupName) {
+    private TaskGroups(String groupName) {
         this.groupName = groupName
     }
 

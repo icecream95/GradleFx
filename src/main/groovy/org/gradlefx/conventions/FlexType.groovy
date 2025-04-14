@@ -44,7 +44,7 @@ enum FlexType {
      * @param configName name of the Flex configuration. E.g. when you specify 'air' it will use the 'air-config.xml'.
      * @param compileClass the task that will compile the project.
      */
-    public FlexType(String configName, Class<CompileTask> compileClass) {
+    private FlexType(String configName, Class<CompileTask> compileClass) {
         this.configName = configName
         this.compileClass = compileClass
     }
